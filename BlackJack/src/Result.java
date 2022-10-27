@@ -1,5 +1,3 @@
-import java.io.ObjectInputStream.GetField;
-
 public class Result {
 
   private int playerResult;
@@ -34,9 +32,9 @@ public class Result {
 
   // method
   public void compareResults(){
-    if(this.playerResult == 21){
+    if(this.playerResult == 21 && this.dealerResult != 21){
       System.out.println("🎉Congratulations🎉");
-    }else if(this.dealerResult == 21){
+    }else if(this.dealerResult == 21 && this.playerResult != 21){
       System.out.println("😭You lost😭");
     }
     

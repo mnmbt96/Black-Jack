@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.xml.namespace.QName;
+
+
 public class Dealer {
 
   Result result = new Result();
@@ -35,16 +38,20 @@ public class Dealer {
       list.add(card.deal(n, 2));
       sumList.add(dealersTotal);
     }
+
     dealersTotal = sumList.get(0) + sumList.get(1);
 
     if(sumList.get(0)>=10 && sumList.get(1) == 1){
-      System.out.println("Black Jack");
+      dealersTotal = 21;
+      System.out.println("🎉🃏Black Jack🃏🎉");
+      System.out.println("Dealer's total: " + dealersTotal);
       result.compareResults();
     }else if(sumList.get(0) == 1 && sumList.get(1)>=10){
-      System.out.println("Black Jack");
+      dealersTotal = 21;
+      System.out.println("🎉🃏Black Jack🃏🎉");
+      System.out.println("Dealer's total: " + dealersTotal);
       result.compareResults();
-    }
-
+    }else{
     // System.out.println("Dealer's card: " + list);
 
     while(dealersTotal < 17){
@@ -53,13 +60,13 @@ public class Dealer {
       int n2 = rand2.nextInt(13)+1;
       list.add(card.deal(n2, 2));
       dealersTotal += Integer.parseInt(card.deal(n2, 1));
-      System.out.println();
-      System.out.println("Dealer is dealing cards...");
     }
     
+    System.out.println();
+    System.out.println("Dealer is dealing cards...");
     System.out.println("Dealer's card: " + list);
     System.out.println("Dealer's total: " + dealersTotal);
     System.out.println();
   }
-
+}
 }

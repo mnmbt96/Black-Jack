@@ -1,6 +1,4 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
-import javax.xml.stream.events.StartDocument;
 
 public class BlackJack {
   private static String name;

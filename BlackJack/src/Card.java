@@ -1,28 +1,5 @@
-import java.util.ArrayList;
-import java.util.Random;
-
 public class Card{
-  //define fields
-  // private int card;
-
-  // public Card(){
-  //   this.card = 0;
-  // }
-
-  // public Card(int card){
-  //   this.card = card;
-  // }
-
-  // public int getCard() {
-  //   return card;
-  // }
-
-  // public void setCard(int card) {
-  //   this.card = card;
-  // }
-
-
-  public String deal(int n,int n2 ){
+  public String deal(int n, int arrIndex){
 
     String[][] cardList = {
       {"1","1","A"}, 
@@ -39,7 +16,7 @@ public class Card{
       {"12","10","Q"},
       {"13","10","K"}
     };
-    return cardList[n-1][n2];
+    return cardList[n-1][arrIndex];
     
   }
 }
