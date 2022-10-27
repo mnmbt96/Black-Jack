@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class BlackJack {
+public class BlackJack{
   private static String name;
 
   public BlackJack(){
@@ -10,7 +10,7 @@ public class BlackJack {
     return name;
   }
 
-  public static void start(){
+  public static void start() throws InterruptedException{
     Player player = new Player(0);
     System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     System.out.println("   Welcome to Black Jack! ");
@@ -23,9 +23,12 @@ public class BlackJack {
     BlackJack blackJack = new BlackJack();
     name = scanner.nextLine();
     System.out.println();
+
+    Thread.sleep(1000);
     System.out.println("Welcome " + blackJack.getName() + ",");
 
     //Game Start
+    Thread.sleep(1000);
     System.out.println("---------------------------");
     System.out.println("        Game Start!!       ");
     System.out.println("---------------------------");
@@ -33,6 +36,7 @@ public class BlackJack {
   
 
     //Result
+    Thread.sleep(1500);
     System.out.println("---------------------------");
     System.out.println("           RESULT          ");
     System.out.println("---------------------------");

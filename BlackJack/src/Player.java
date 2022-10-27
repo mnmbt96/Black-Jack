@@ -4,19 +4,16 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Player{
-   //Field
    private int playersTotal;
 
    // dealer varialbe type is Dealer 
    private Dealer dealer;
 
-   //Constructor
    Player(int playersTotal){
      this.playersTotal = playersTotal;
      this.dealer = new Dealer(0);
    }
 
-   //Getter & Setter
 	 public int getPlayersTotal() {
 		return this.playersTotal;
 	 }
@@ -33,8 +30,9 @@ public class Player{
       this.dealer = dealer;
    }
 
-   //Method
-   public void GameStart(){
+   Card card = new Card();
+
+   public void GameStart() throws InterruptedException{
     BlackJack blackJack = new BlackJack();
 
     ArrayList<String> list = new ArrayList<>(2);
@@ -43,35 +41,71 @@ public class Player{
     for(int i = 0; i < 2; i++){
       Random rand = new Random();
       int n = rand.nextInt(13)+1;
-       
-      Card card = new Card();
 
       playersTotal = Integer.parseInt(card.deal(n,1));
       list.add(card.deal(n,2));
       sumList.add(playersTotal);
+      
     }
+
+    //TEST
+    //Black Jack conditions
+    // list.add(card.deal(1, 2));
+    // list.add(card.deal(11, 2));
+    // sumList.add(1);
+    // sumList.add(10);
+
+    Thread.sleep(1000);
+    System.out.print("Dealing 2 Cards");
+    Thread.sleep(500);
+    System.out.print(".");
+    Thread.sleep(500);
+    System.out.print(".");
+    Thread.sleep(500);
+    System.out.print(".");
+    Thread.sleep(500);
+    System.out.println(".");
   
+    //Black Jack
     if(sumList.get(0)==10 && sumList.get(1) == 1){
       playersTotal = 21;
-      System.out.println("Dealer deals two cards: " + list.get(0) + " & " + list.get(1));
+      Thread.sleep(1500);
+      System.out.print(blackJack.getName()+ "'s Cards: ");
+      Thread.sleep(1500);
+      System.out.println(list.get(0) + " & " + list.get(1));
+      Thread.sleep(1500);
       System.out.println("🎉🃏Black Jack🃏🎉");
+      Thread.sleep(1500);
       System.out.println(blackJack.getName()+ "'s total: " + playersTotal);
       dealer.DealersTurn();
     }else if(sumList.get(0) == 1 && sumList.get(1)==10){
       playersTotal = 21;
-      System.out.println("Dealer deals two cards: " + list.get(0) + " & " + list.get(1));
+      Thread.sleep(1500);
+      System.out.print(blackJack.getName()+ "'s Cards: " );
+      Thread.sleep(1500);
+      System.out.println(list.get(0) + " & " + list.get(1));
+      Thread.sleep(1500);
       System.out.println("🎉🃏Black Jack🃏🎉");
+      Thread.sleep(1500);
       System.out.println(blackJack.getName()+ "'s total: " + playersTotal);
       dealer.DealersTurn();
-    }else{
 
+      //if not black jack
+    }else{
       playersTotal = sumList.get(0) + sumList.get(1);
-      System.out.println("Dealer deals two cards: " + list.get(0) + " & " + list.get(1));
+
+      Thread.sleep(1500);
+      System.out.print(blackJack.getName()+"'s Cards: " );
+      Thread.sleep(1500);
+      System.out.println(list.get(0) + " & " + list.get(1));
+      Thread.sleep(1500);
       System.out.println(blackJack.getName()+ "'s total: " + playersTotal);
+      System.out.println();
 
       int option = 0;
 
     do{
+      Thread.sleep(1500);
     System.out.println("==============");
     System.out.println("=  1. Hit    =");
     System.out.println("=  2. Stand  =");
@@ -80,42 +114,65 @@ public class Player{
     Scanner scanner = new Scanner(System.in);
     System.out.print("Enter an option: ");
 
+      //If the input is not a number
       try{
        option = scanner.nextInt();
       }catch(InputMismatchException e){
         scanner.next();
-        System.out.println("It should be a number.");
-        System.out.println("Enter an option again: ");
+        option = 3;
+        // System.out.println("It should be a number.");
+        // System.out.println("Enter an option again. ");
       }catch(Exception e){
         scanner.next();
-        System.out.println("Something went wrong.");
-        System.out.print("Enter number again: ");
+        option =3;
+        // System.out.println("Something went wrong.");
+        // System.out.print("Enter number again. ");
       }
 
     switch (option) {
+      //Hit
       case 1:
         Random rand2 = new Random();
         int n2 = rand2.nextInt(13) + 1;
 
-        Card card = new Card();
+        // Card card = new Card();
         list.add(card.deal(n2, 2));
 
+        System.out.println();
+        Thread.sleep(1000);
+        System.out.print("Dealing Cards");
+        Thread.sleep(500);
+        System.out.print(".");
+        Thread.sleep(500);
+        System.out.print(".");
+
         playersTotal += Integer.parseInt(card.deal(n2, 1));
-        System.out.println("=======================");
-        System.out.println("Dealer deals: " + list.get(list.size()-1));
+        System.out.println();
+        Thread.sleep(1500);
+        System.out.print(blackJack.getName()+ "'s Card: " );
+        Thread.sleep(1500);
+        System.out.println(list.get(list.size()-1));
+        Thread.sleep(1500);
         System.out.println(blackJack.getName() + "'s total: " + playersTotal);
         System.out.println();
 
+        if(playersTotal>21){
+          Thread.sleep(1500);
+          System.out.println("😵Burst😵");
+          dealer.DealersTurn();
+        }
         break;
+
+        //Stand
       case 2:
         dealer.DealersTurn();
         scanner.close();
         break;
-      // default:
-      // System.out.println("Invalid option! Please enter an option again.");
-      // break;
+      default:
+      System.out.println("Invalid option! Please enter an option again.");
+      break;
     }
-  }while(option != 2);
+  }while(option != 2 && playersTotal< 22);
  }
  }
 }
