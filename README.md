@@ -4,7 +4,7 @@ The most versatile card is the Ace card as it can worth 11 if it is hit in the f
 The Jack, Queen, and King card all worth only 10 points. 
 The rest of the cards equal the value of the card.
 
-![image](https://user-images.githubusercontent.com/111376852/198522546-da9e30ad-995a-4e95-b937-fe6affaec5bb.png)
+![image](https://user-images.githubusercontent.com/111376852/198522677-724a76d3-3391-4ffb-a6bd-93418af6f9c1.png)
 
 When you start the game, the dealer will hand you two random cards. At this point, you must determine the sum of your current cards and see if you would like to add more to that value or none. 
 Then the dealer will ask you to “Hit” or “Stand”. When you click “Hit”, you will receive another random card. You can hit as many times as you want, however, if you go over 21, you will get “busted” and lose.
