@@ -2,6 +2,11 @@ public class Card{
   public String deal(int n, int arrIndex){
 
     String[][] cardList = {
+
+      //[][0] = Random card value
+      //[][1] = Value for sum
+      //[][2] = Value for display
+
       {"1","1","A"}, 
       {"2","2","2"},
       {"3","3","3"}, 
@@ -16,6 +21,7 @@ public class Card{
       {"12","10","Q"},
       {"13","10","K"}
     };
+    
     return cardList[n-1][arrIndex];
     
   }
